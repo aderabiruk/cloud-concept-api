@@ -1,0 +1,15 @@
+{
+  "errors": {
+    "general": {
+      "not_found_error": "Resource not found!",
+      "service_unavailable": "Service unavailable!",
+      "internal_server_error": "Oops, Something went wrong!",
+      "forbidden_error": "You are not allowed to access this resource!",
+      "not_implemented_error": "This resource has not been implemented!",
+      "unauthorized_error": "You are not authorized to access this resource!"
+    },
+    "settings": {
+      "template_not_found": "Template not found!"
+    }
+  }
+}
