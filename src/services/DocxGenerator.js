@@ -1,6 +1,7 @@
 import fs from 'fs'
 import _ from 'lodash'
 import path from 'path'
+import rimraf from 'rimraf'
 import { EventEmitter } from 'events'
 import MailComposer from 'nodemailer/lib/mail-composer'
 
@@ -51,6 +52,8 @@ emitter.on('start', async ({ email, template, board }) => {
   // Convert Zip File to DocX
   const outputDocxFile = `${basename}-output.docx`
   fs.renameSync(outputZipFile, outputDocxFile)
+
+  rimraf(zipFolder).then(() => console.log('Zip Folder removed'))
 
   // Send Email
   const mailContent = new MailComposer({
