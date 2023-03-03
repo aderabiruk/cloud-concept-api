@@ -1,5 +1,4 @@
 import fs from 'fs'
-import axios from 'axios'
 import https from 'https'
 import { reject } from 'async'
 
