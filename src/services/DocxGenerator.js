@@ -29,7 +29,14 @@ emitter.on('start', async ({ email, template, board }) => {
   console.log('Position of Template: ', position)
   if (position.p > -1) {
     const { columns, items } = board
-    const table = await DocXHelper.generateDocxTableInJSON(zipFolder, columns, items)
+    const table = await DocXHelper.generateDocxTableInJSON(
+      zipFolder,
+      columns.slice(0, 5),
+      items.map(item => ({
+        ...item,
+        column_values: item.column_values.slice(0, 4)
+      }))
+    )
     _.set(jsonContent, `elements[${position.d}].elements[${position.b}].elements[${position.p}]`, table)
   }
   // fs.writeFileSync('xml.json', JSON.stringify(jsonContent))

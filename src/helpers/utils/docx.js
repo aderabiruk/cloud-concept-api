@@ -508,11 +508,12 @@ async function downloadMedia(folder, columns, items) {
         return [];
       }
       const file = item?.column_values[index - 1]?.text || null;
+      const filePublicUrl = item?.assets?.find(asset => asset.url === file)?.public_url || null;
       let destination;
       const id = `R${Buffer.from(Math.random().toString()).toString("base64").substring(5,15)}`
-      if (file) {
+      if (file && filePublicUrl) {
         destination = `${folder}/media/${id}${decodeURI(path.extname(file))}`;
-        await DownloadHelper.downloadFile(file, destination);
+        await DownloadHelper.downloadFile(filePublicUrl, destination);
       }
 
       return {
