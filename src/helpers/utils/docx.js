@@ -513,7 +513,7 @@ async function downloadMedia(folder, columns, items) {
       const id = `R${Buffer.from(Math.random().toString()).toString("base64").substring(5,15)}`
       if (file && filePublicUrl) {
         destination = `${folder}/media/${id}${decodeURI(path.extname(file))}`;
-        await DownloadHelper.downloadFile(filePublicUrl, destination);
+        await DownloadHelper.downloadFile(file, destination);
       }
 
       return {
