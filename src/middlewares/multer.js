@@ -1,7 +1,9 @@
 import fs from 'fs'
 import moment from 'moment'
 import multer from 'multer'
+import { BadRequestError } from '../helpers/errors'
 
+import messages from '../helpers/i18next/en.json'
 import * as logger from '../helpers/loggers/log4js'
 
 /**
@@ -41,7 +43,11 @@ const upload = multer({
       filesize: file.size,
       mimetype: file.mimetype
     })
-    callback(null, true)
+    if (file.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+      callback(null, true)
+    } else {
+      callback(new BadRequestError(messages.errors.settings.invalid_document_uploaded))
+    }
   }
 })
 

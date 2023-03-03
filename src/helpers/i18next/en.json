@@ -9,7 +9,8 @@
       "unauthorized_error": "You are not authorized to access this resource!"
     },
     "settings": {
-      "template_not_found": "Template not found!"
+      "template_not_found": "Template not found!",
+      "invalid_document_uploaded": "Invalid file uploaded!"
     }
   }
 }

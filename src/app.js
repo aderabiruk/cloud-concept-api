@@ -55,7 +55,7 @@ app.use((error, request, response, next) => {
   } else {
     response.status(500).json({
       timestamp: moment(),
-      errors: [messages.errors.general.internal_server_error]
+      errors: messages.errors.general.internal_server_error
     })
   }
 })
